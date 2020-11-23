@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Button, ListGroup } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import DrinkApi from "./api";
 import "./DrinkDetails.css";
 
 const COCKTAIL_URL = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=";
@@ -14,9 +15,9 @@ function DrinkDetails() {
 
   useEffect(() => {
     async function getDrinkDetails() {
-      const result = await axios.get(`${COCKTAIL_URL}${id}`);
+      const result = DrinkApi.getDrink(id);
       console.log("WORKS??", result);
-      setDrink(result.data.drinks[0]);
+      setDrink(result);
       setIsLoading(false);
     }
     getDrinkDetails();
@@ -54,7 +55,7 @@ function DrinkDetails() {
           <h5>Ingredients</h5>
           <ListGroup>
             {recipe.map(inst => (
-              <ListGroup.Item>
+              <ListGroup.Item key={drink.idDrink}>
                 <i className="float-left" onClick={handleClick}>
                   ...
                   </i>

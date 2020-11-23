@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { ListGroup } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
+import DrinkApi from "./api";
+import SearchForm from "./SearchForm";
+
 
 function DrinksList() {
   const [drinks, setDrinks] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
-  const history = useHistory();
+  // const history = useHistory();
 
   // useEffect(() => {
   //   async function getDrinks() {
-  //     const result = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${searchTerm}`);
   //     setDrinks(result.data.drinks);
   //   }
   //   getDrinks();
@@ -18,9 +20,9 @@ function DrinksList() {
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    const result = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${searchTerm}`);
-    
-    setDrinks(result.data.drinks);
+    const result = await DrinkApi.getDrinksByIngredient(searchTerm);
+
+    setDrinks(result);
     setSearchTerm("");
   }
 
@@ -31,17 +33,14 @@ function DrinksList() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input name={searchTerm} value={searchTerm} onChange={handleChange} />
-        <button>Search</button>
-      </form>
-      <ul>
+      <SearchForm searchTerm={searchTerm} handleChange={handleChange} handleSubmit={handleSubmit} />
+      <ListGroup>
         {drinks && drinks.map(d => (
-          <li key={d.idDrink}>
+          <ListGroup.Item key={d.idDrink}>
             <Link to={`/drinks/${d.idDrink}`}>{d.strDrink}</Link>
-          </li>
+          </ListGroup.Item>
         ))}
-      </ul>
+      </ListGroup>
     </div>
   );
 }
