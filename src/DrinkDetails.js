@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Button, ListGroup } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import "./DrinkDetails.css";
 
 const COCKTAIL_URL = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=";
 
@@ -37,17 +39,36 @@ function DrinkDetails() {
 
   const recipe = getRecipe(drink)
 
+  function handleClick(evt) {
+    const item = evt.target.parentNode;
+    item.style.backgroundColor = "blue";
+  }
+
   if (isLoading) return <h1>Loading...</h1>;
 
   return (
-    <div>
-      <h1>{drink.strDrink}</h1>
-      <ul>
-        {recipe.map(inst => (
-          <li>{inst}</li>
-        ))}
-      </ul>
-      <h5>{drink.strInstructions}</h5>
+    <div className="DrinkDetails">
+      <h3>{drink.strDrink}</h3>
+      <div className="row">
+        <div className="col-6">
+          <h5>Ingredients</h5>
+          <ListGroup>
+            {recipe.map(inst => (
+              <ListGroup.Item>
+                <i className="float-left" onClick={handleClick}>
+                  ...
+                  </i>
+                {inst}
+              </ListGroup.Item>
+            ))}
+          </ListGroup>
+        </div>
+        <div className="col-6">
+          <h5>Instructions</h5>
+          <h5>{drink.strInstructions}</h5>
+          <Button variant="primary">Button</Button>
+        </div>
+      </div>
     </div>
   )
 }
