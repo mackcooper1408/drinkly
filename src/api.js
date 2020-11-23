@@ -18,7 +18,7 @@ class DrinkApi {
     console.debug("API Call:", endpoint, data, method);
 
     const url = `${BASE_URL}/${endpoint}`;
-    
+
     try {
       // return (await axios({ url, method, data, params })).data;
       return (await axios({ url, method })).data;
@@ -35,7 +35,7 @@ class DrinkApi {
   /** Get details on a company by handle. */
 
   static async getDrink(id) {
-    let res = await this.request(`${id}`);
+    let res = await this.request(`lookup.php?i=${id}`);
     return res.drinks[0];
   }
 

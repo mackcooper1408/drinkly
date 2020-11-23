@@ -34,9 +34,9 @@ function DrinksList() {
   return (
     <div>
       <SearchForm searchTerm={searchTerm} handleChange={handleChange} handleSubmit={handleSubmit} />
-      <ListGroup>
+      <ListGroup as="ul">
         {drinks && drinks.map(d => (
-          <ListGroup.Item key={d.idDrink}>
+          <ListGroup.Item as="li" key={d.idDrink}>
             <Link to={`/drinks/${d.idDrink}`}>{d.strDrink}</Link>
           </ListGroup.Item>
         ))}

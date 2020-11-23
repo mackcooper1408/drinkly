@@ -1,23 +1,28 @@
-import axios from "axios";
+import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { Button, ListGroup } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import DrinkApi from "./api";
 import "./DrinkDetails.css";
 
-const COCKTAIL_URL = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=";
 
 function DrinkDetails() {
-  const [drink, setDrink] = useState({})
+  const [drink, setDrink] = useState({});
+  const [neededIngredients, setNeededIngredients] = useState([])
+  const [ownedIngredients, setOwnedIngredients] = useState([])
   const [isLoading, setIsLoading] = useState(true);
 
   const { id } = useParams();
 
   useEffect(() => {
     async function getDrinkDetails() {
-      const result = DrinkApi.getDrink(id);
-      console.log("WORKS??", result);
+      const result = await DrinkApi.getDrink(id);
+
+      const recipe = getRecipe(result);
+
       setDrink(result);
+      setNeededIngredients(recipe);
       setIsLoading(false);
     }
     getDrinkDetails();
@@ -38,25 +43,37 @@ function DrinkDetails() {
     return recipe;
   }
 
-  const recipe = getRecipe(drink)
-
   function handleClick(evt) {
     const item = evt.target.parentNode;
-    item.style.backgroundColor = "blue";
+    console.log(item.innerText);
+
+    const neededMinusItem = neededIngredients.filter(inst => inst !== item.innerText);
+
+    setNeededIngredients(neededMinusItem);
+    setOwnedIngredients(old => [...old, item.innerText]);
   }
 
   if (isLoading) return <h1>Loading...</h1>;
 
   return (
-    <div className="DrinkDetails">
+    <div className="DrinkDetails container">
       <h3>{drink.strDrink}</h3>
-      <div className="row">
-        <div className="col-6">
-          <h5>Ingredients</h5>
-          <ListGroup>
-            {recipe.map(inst => (
-              <ListGroup.Item key={drink.idDrink}>
-                <i className="float-left" onClick={handleClick}>
+      <div className="row row-sm">
+        <div className="col-5">
+          <h5>Ingredients Needed</h5>
+          <ListGroup as="ul">
+            {neededIngredients.map(inst => (
+              <ListGroup.Item as="li" variant="secondary" key={inst}>
+                <FontAwesomeIcon icon={faPlusCircle} className="float-left" onClick={handleClick} />
+                {inst}
+              </ListGroup.Item>
+            ))}
+          </ListGroup>
+          <h5>Ingredients checked</h5>
+          <ListGroup as="ul">
+            {ownedIngredients.map(inst => (
+              <ListGroup.Item as="li" variant="success" key={inst}>
+                <i className="float-left">
                   ...
                   </i>
                 {inst}
