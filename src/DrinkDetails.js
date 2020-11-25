@@ -83,6 +83,7 @@ function DrinkDetails() {
         </div>
         <div className="col-6">
           <h5>Instructions</h5>
+          <img src={drink.strDrinkThumb} alt={drink.strDrink} width="25%" height="auto"></img>
           <h5>{drink.strInstructions}</h5>
           <Button variant="primary">Button</Button>
         </div>
