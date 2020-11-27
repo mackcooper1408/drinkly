@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Button, ListGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import DrinkApi from "./api";
-import SearchForm from "./SearchForm";
+import CocktailPicker from "./CocktailPicker";
 
 
 function DrinksList() {
@@ -24,7 +23,7 @@ function DrinksList() {
           </ListGroup.Item>
         ))}
       </ListGroup> :
-      <SearchForm updateList={updateList} />}
+      <CocktailPicker updateList={updateList} />}
     </div>
   );
 }

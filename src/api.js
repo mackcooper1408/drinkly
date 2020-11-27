@@ -39,23 +39,28 @@ class DrinkApi {
     return res.drinks[0];
   }
 
-
-  static async getDrinksByIngredient(formData) {
-    let res;
-    res = await this.request(`filter.php?i=${formData.alcohol}`);
-    // if (formData) {
-    //   // res = await axios.get(`${BASE_URL}/filter.php?i=${query}`);
-    // } else {
-    //   res = await this.request(`gin`);
-    // }
-    return res.drinks;
-  }
-
   static async getIngredientList() {
     const res = await this.request(`list.php?i=list`);
     return res.drinks;
   }
 
+  static async getDrinksByIngredient(ingredient) {
+    const res = await this.request(`filter.php?i=${ingredient}`);
+    return res.drinks;
+  }
+
+  // static async getDrinksByMixer(mixer) {
+  //   const res = await this.request(`filter.php?i=${mixer}`);
+  //   return res.drinks;
+  // }
+
+  // static async getDrinksByIngredient(formData) {
+  //   const values = Object.values(formData);
+  //   console.log("VALUES", values);
+  //   const res = await this.request(`filter.php?i=${values[0]}`);
+  //   return res.drinks;
+  // }
+  
 }
 
 export default DrinkApi;
