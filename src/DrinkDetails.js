@@ -1,7 +1,7 @@
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
-import { Button, ListGroup } from "react-bootstrap";
+// import { Button, ListGroup } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import DrinkApi from "./api";
 import "./DrinkDetails.css";
@@ -61,31 +61,31 @@ function DrinkDetails() {
       <div className="row row-sm">
         <div className="col-5">
           <h5>Ingredients Needed</h5>
-          <ListGroup as="ul">
+          <ul className="list-group">
             {neededIngredients.map(inst => (
-              <ListGroup.Item as="li" variant="secondary" key={inst}>
+              <li className="list-item" key={inst}>
                 <FontAwesomeIcon icon={faPlusCircle} className="float-left" onClick={handleClick} />
                 {inst}
-              </ListGroup.Item>
+              </li>
             ))}
-          </ListGroup>
+          </ul>
           <h5>Ingredients checked</h5>
-          <ListGroup as="ul">
+          <ul className="list-group">
             {ownedIngredients.map(inst => (
-              <ListGroup.Item as="li" variant="success" key={inst}>
+              <li className="list-item" key={inst}>
                 <i className="float-left">
                   ...
                   </i>
                 {inst}
-              </ListGroup.Item>
+              </li>
             ))}
-          </ListGroup>
+          </ul>
         </div>
         <div className="col-6">
           <h5>Instructions</h5>
           <img src={drink.strDrinkThumb} alt={drink.strDrink} width="25%" height="auto"></img>
           <h5>{drink.strInstructions}</h5>
-          <Button variant="primary">Button</Button>
+          <button className="btn btn-primary btn-lg">button</button>
         </div>
       </div>
     </div>
