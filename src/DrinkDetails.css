@@ -1,3 +1,11 @@
 .DrinkDetails svg {
     cursor: pointer;
 }
+
+li {
+    list-style: none;
+}
+
+img {
+    border-radius: 25%;
+}
