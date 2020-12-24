@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import DrinkDetails from "./DrinkDetails";
 import Home from "./Home";
 import NavBar from "./NavBar";
+import CocktailPicker from "./CocktailPicker";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
             <Home />
           </Route>
           <Route exact path="/drinks">
-            <DrinksList />
+            <CocktailPicker />
           </Route>
           <Route exact path="/drinks/:id">
             <DrinkDetails />
