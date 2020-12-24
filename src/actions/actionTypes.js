@@ -1,0 +1,2 @@
+export const LOAD_INGREDIENTS = "LOAD_INGREDIENTS";
+export const GET_DRINKS = "GET_DRINKS";
