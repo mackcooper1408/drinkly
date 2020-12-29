@@ -7,12 +7,11 @@ import IngredientPicker from "./IngredientPicker";
  *  and resulting cocktails (DrinksList) once an ingredient has been selected
  */
 function CocktailPicker() {
-  const drinks = useSelector((store) => store.drinks);
 
   return (
     <div>
       <IngredientPicker />
-      <DrinksList drinks={drinks} />
+      <DrinksList />
     </div>
   );
 }
