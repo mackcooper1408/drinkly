@@ -2,10 +2,14 @@ import DrinkApi from "../api";
 import { GET_DRINKS } from "./actionTypes";
 
 export function getDrinksFromAPI(ingredient) {
-  console.log("IN ACTION CREATOR");
   return async function (dispatch) {
     try {
-      const result = await DrinkApi.getDrinksByIngredient(ingredient);
+      let result;
+      if (ingredient) {
+        result = await DrinkApi.getDrinksByIngredient(ingredient);
+      } else {
+        result = await DrinkApi.getPopularDrinks();
+      }
       dispatch(gotDrinks(result));
     } catch (err) {}
   };

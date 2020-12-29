@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = "https://www.thecocktaildb.com/api/json/v1/1";
+const API_KEY = "9973533";
+const BASE_URL = "https://www.thecocktaildb.com/api/json/v2";
 
 /** API Class.
  *
@@ -17,7 +18,7 @@ class DrinkApi {
   static async request(endpoint, data = {}, method = "get") {
     console.debug("API Call:", endpoint, data, method);
 
-    const url = `${BASE_URL}/${endpoint}`;
+    const url = `${BASE_URL}/${API_KEY}/${endpoint}`;
 
     try {
       // return (await axios({ url, method, data, params })).data;
@@ -46,6 +47,11 @@ class DrinkApi {
 
   static async getDrinksByIngredient(ingredient) {
     const res = await this.request(`filter.php?i=${ingredient}`);
+    return res.drinks;
+  }
+
+  static async getPopularDrinks() {
+    const res = await this.request("popular.php");
     return res.drinks;
   }
 

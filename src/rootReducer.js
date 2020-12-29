@@ -15,7 +15,6 @@ export default function rootReducer(state = INITIAL_STATE, action) {
         ingredients: action.payload
       }
     case GET_DRINKS:
-      console.log("MADE IT");
       return {
         ...state,
         drinks: action.payload
