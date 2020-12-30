@@ -1,5 +1,9 @@
-import { GET_DRINKS, LOAD_INGREDIENTS } from "./actions/actionTypes";
-
+import {
+  ADD_SELECTIONS,
+  GET_DRINKS,
+  LOAD_INGREDIENTS,
+  REMOVE_SELECTION,
+} from "./actions/actionTypes";
 
 const INITIAL_STATE = {
   drinks: [],
@@ -8,18 +12,31 @@ const INITIAL_STATE = {
 };
 
 export default function rootReducer(state = INITIAL_STATE, action) {
-  switch(action.type) {
+  switch (action.type) {
     case LOAD_INGREDIENTS:
       return {
         ...state,
-        ingredients: action.payload
-      }
+        ingredients: action.payload,
+      };
     case GET_DRINKS:
       return {
         ...state,
-        drinks: action.payload
-      }
-      default:
-        return state;
+        drinks: action.payload,
+      };
+    case ADD_SELECTIONS:
+      return {
+        ...state,
+        selections: [...state.selections, action.payload],
+      };
+    case REMOVE_SELECTION:
+      const updatedSelections = state.selections.filter(
+        (s) => s !== action.payload
+      );
+      return {
+        ...state,
+        selections: updatedSelections,
+      };
+    default:
+      return state;
   }
 }

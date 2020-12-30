@@ -2,6 +2,7 @@ import DrinkApi from "../api";
 import { GET_DRINKS } from "./actionTypes";
 
 export function getDrinksFromAPI(ingredient) {
+  console.log("DRINKS")
   return async function (dispatch) {
     try {
       let result;
