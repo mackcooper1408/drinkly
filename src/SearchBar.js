@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { throttle } from "throttle-debounce";
 
 
-function SearchBar({ search }) {
+function SearchBar({ search, placeholder }) {
   const initialState = { term: "" };
   const [formData, setFormData] = useState(initialState);
 
@@ -34,7 +34,7 @@ function SearchBar({ search }) {
           className="form-control"
           name="term"
           value={formData.term}
-          placeholder="Search Term..."
+          placeholder={placeholder}
           onChange={handleChange} />
       </div>
       <button className="btn btn-primary btn-md form-group">🔍 Search</button>
