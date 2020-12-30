@@ -36,7 +36,8 @@ function IngredientPicker() {
   if (ingredients.length === 0) return <div>LOADING...</div>;
 
   return (
-    <div>
+    <div className="container col-sm-12 col-md-6">
+      <h3><i>Pick Your Ingredients</i></h3>
       <SearchBar search={search} />
       {slicedIngredients.map((ingredient) => (
         <button

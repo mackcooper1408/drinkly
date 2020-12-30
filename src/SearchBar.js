@@ -27,7 +27,7 @@ function SearchBar({ search }) {
   }
 
   return (
-    <form className="form-inline mt-4" onSubmit={handleSubmit}>
+    <form className="form-inline justify-content-center mt-4" onSubmit={handleSubmit}>
       <div className="form-group mx-2">
         <input
           type="text"
