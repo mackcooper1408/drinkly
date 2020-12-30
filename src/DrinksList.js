@@ -7,13 +7,17 @@ import { getDrinksFromAPI } from "./actions/drinks";
  *  Each drink links to a drink detail page */
 function DrinksList() {
   const drinks = useSelector((store) => store.drinks);
+  const selections = useSelector((store) => store.selections);
 
   const dispatch = useDispatch();
 
   // update store with popular drinks from API if no search has been made yet
   useEffect(() => {
-    if (drinks.length === 0) dispatch(getDrinksFromAPI());
-  }, [dispatch, drinks]);
+    if (drinks.length === 0 || selections.length === 0)
+      dispatch(getDrinksFromAPI());
+    else if (selections.length > 0)
+      dispatch(getDrinksFromAPI(selections.join(",")));
+  }, [dispatch, selections]);
 
   // display message when api returns "None Found" from drink search
   if (drinks === "None Found")
