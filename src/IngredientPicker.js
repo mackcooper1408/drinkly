@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import {
   addIngredientToSelections,
   getIngredientsFromAPI,
 } from "./actions/ingredients";
 import SearchBar from "./SearchBar";
+import "./IngredientPicker.css";
 
 /**
  * Displays a subset of ingredients to choose from
@@ -49,19 +51,23 @@ function IngredientPicker() {
 
   return (
     <div className="container col-sm-12 col-md-6">
-      {/* <h3>
-        <i>Pick Your Ingredients</i>
-      </h3> */}
       <SearchBar search={search} placeholder="Search Ingredients..." />
-      {slicedIngredients.map((ingredient) => (
-        <button
-          className="btn btn-sm btn-success m-2"
-          key={ingredient.strIngredient1}
-          onClick={handleClick}
-        >
-          {ingredient.strIngredient1}
-        </button>
-      ))}
+      <TransitionGroup>
+        {slicedIngredients.map((ingredient) => (
+          <CSSTransition
+            key={ingredient.strIngredient1}
+            timeout={500}
+            classNames="item"
+          >
+            <button
+              className="btn btn-sm btn-success m-2"
+              onClick={handleClick}
+            >
+              {ingredient.strIngredient1}
+            </button>
+          </CSSTransition>
+        ))}
+      </TransitionGroup>
       <hr className="border-secondary" />
     </div>
   );

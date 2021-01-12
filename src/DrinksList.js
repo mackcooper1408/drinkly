@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { getDrinksFromAPI } from "./actions/drinks";
+import Slide from "react-reveal/Slide";
+import "./DrinksList.css";
 
 /** Displays list of drinks from selected ingredients.
  *  Each drink links to a drink detail page */
@@ -26,15 +29,31 @@ function DrinksList() {
     );
 
   return (
+    // <div>
+    //   <TransitionGroup component="ul" className="list-group my-4">
+    //     {drinks &&
+    //       drinks.map((d) => (
+    //         <CSSTransition timeout={600} classNames="item" key={d.idDrink}>
+    //           <li className="list-group-item">
+    //             <Link to={`/drinks/${d.idDrink}`}>{d.strDrink}</Link>
+    //           </li>
+    //         </CSSTransition>
+    //       ))}
+    //   </TransitionGroup>
+    // </div>
     <div>
+      {/* <TransitionGroup component="ul" className="list-group my-4"> */}
       <ul className="list-group my-4">
         {drinks &&
           drinks.map((d) => (
-            <li className="list-group-item" key={d.idDrink}>
-              <Link to={`/drinks/${d.idDrink}`}>{d.strDrink}</Link>
-            </li>
+            <Slide left>
+              <li className="list-group-item">
+                <Link to={`/drinks/${d.idDrink}`}>{d.strDrink}</Link>
+              </li>
+            </Slide>
           ))}
       </ul>
+      {/* </TransitionGroup> */}
     </div>
   );
 }
