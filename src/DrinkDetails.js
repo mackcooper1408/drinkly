@@ -39,9 +39,9 @@ function DrinkDetails() {
     const recipe = [];
     let i = 1;
     while (i <= 15) {
-      if (drink[`strMeasure${i}`]) {
-        const measure = drink[`strMeasure${i}`];
-        const ingredient = drink[`strIngredient${i}`];
+      if (drink[`strMeasure${i}`] || drink[`strIngredient${i}`]) {
+        const measure = drink[`strMeasure${i}`] || "";
+        const ingredient = drink[`strIngredient${i}`] || "";
         const instructions = `${measure} ${ingredient}`;
         recipe.push({ id: uuid(), instructions });
       }
