@@ -24,6 +24,7 @@ export default function rootReducer(state = INITIAL_STATE, action) {
         drinks: action.payload,
       };
     case ADD_SELECTIONS:
+      if (state.selections.includes(action.payload)) return state;
       return {
         ...state,
         selections: [...state.selections, action.payload],
