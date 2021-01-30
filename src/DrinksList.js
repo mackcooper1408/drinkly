@@ -29,32 +29,30 @@ function DrinksList() {
     );
 
   return (
-    // <div>
-    //   <TransitionGroup component="ul" className="list-group my-4">
-    //     {drinks &&
-    //       drinks.map((d) => (
-    //         <CSSTransition timeout={600} classNames="item" key={d.idDrink}>
-    //           <li className="list-group-item">
-    //             <Link to={`/drinks/${d.idDrink}`}>{d.strDrink}</Link>
-    //           </li>
-    //         </CSSTransition>
-    //       ))}
-    //   </TransitionGroup>
-    // </div>
     <div>
-      {/* <TransitionGroup component="ul" className="list-group my-4"> */}
-      <ul className="list-group my-4">
+      <TransitionGroup component="ul" className="list-group my-4">
         {drinks &&
           drinks.map((d) => (
-            <Slide left>
+            <CSSTransition timeout={600} classNames="item" key={d.idDrink}>
               <li className="list-group-item">
                 <Link to={`/drinks/${d.idDrink}`}>{d.strDrink}</Link>
               </li>
-            </Slide>
+            </CSSTransition>
           ))}
-      </ul>
-      {/* </TransitionGroup> */}
+      </TransitionGroup>
     </div>
+    // <div>
+    //   <ul className="list-group my-4">
+    //     {drinks &&
+    //       drinks.map((d) => (
+    //         <Slide left>
+    //           <li className="list-group-item">
+    //             <Link to={`/drinks/${d.idDrink}`}>{d.strDrink}</Link>
+    //           </li>
+    //         </Slide>
+    //       ))}
+    //   </ul>
+    // </div>
   );
 }
 
