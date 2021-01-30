@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { getDrinksFromAPI } from "./actions/drinks";
-import Slide from "react-reveal/Slide";
+// import Slide from "react-reveal/Slide";
 import "./DrinksList.css";
 
 /** Displays list of drinks from selected ingredients.
@@ -20,7 +20,7 @@ function DrinksList() {
       dispatch(getDrinksFromAPI());
     else if (selections.length > 0)
       dispatch(getDrinksFromAPI(selections.join(",")));
-  }, [dispatch, selections]);
+  }, [dispatch, selections, drinks.length]);
 
   // display message when api returns "None Found" from drink search
   if (drinks === "None Found")
