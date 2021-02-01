@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const API_KEY = "9973533";
-const BASE_URL = "https://www.thecocktaildb.com/api/json/v2";
+const API_KEY = process.env.REACT_APP_API_KEY;
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 /** API Class.
  *
@@ -12,9 +12,6 @@ const BASE_URL = "https://www.thecocktaildb.com/api/json/v2";
  */
 
 class DrinkApi {
-  // the token for interactive with the API will be stored here.
-  static token;
-
   static async request(endpoint, data = {}, method = "get") {
     console.debug("API Call:", endpoint, data, method);
 
@@ -66,7 +63,6 @@ class DrinkApi {
   //   const res = await this.request(`filter.php?i=${values[0]}`);
   //   return res.drinks;
   // }
-  
 }
 
 export default DrinkApi;
