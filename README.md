@@ -6,7 +6,7 @@ This is a simple cocktail finder app. Search for ingredients and find cocktail r
 
 This repo is a Create React App deployed with Netlify.
 
-## [Live Demo](https://6014a6840f0d0b0008ef3934--happy-jones-ed171e.netlify.app/)
+## [Live Demo](https://happy-jones-ed171e.netlify.app/)
 
 # Getting Started on the Development Server
 
