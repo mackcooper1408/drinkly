@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import DrinkDetails from "./DrinkDetails";
 import Home from "./Home";
 import NavBar from "./NavBar";
@@ -8,7 +8,7 @@ import CocktailPicker from "./CocktailPicker";
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <Router>
       <NavBar />
         <Switch>
           <Route exact path="/">
@@ -21,7 +21,7 @@ function App() {
             <DrinkDetails />
           </Route>
         </Switch>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 }
