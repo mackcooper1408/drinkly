@@ -8,7 +8,7 @@ import SelectedIngredients from "./SelectedIngredients";
  */
 function CocktailPicker() {
   return (
-    <div>
+    <div className="CocktailPicker w-100 px-4">
       <IngredientPicker />
       <SelectedIngredients />
       <DrinksList />
