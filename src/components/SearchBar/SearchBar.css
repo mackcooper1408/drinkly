@@ -1,0 +1,20 @@
+.search,
+.backspace {
+  position: absolute;
+  top: 30%;
+  z-index: 100;
+}
+
+.search {
+  left: 2%;
+}
+
+.backspace {
+  right: 2%;
+  cursor: pointer;
+}
+
+.form-control:focus {
+  border-color: transparent;
+  box-shadow: none;
+}
