@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+// import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { Frame } from "framer";
 import {
   addIngredientToSelections,
   getIngredientsFromAPI,
@@ -44,30 +45,38 @@ function IngredientPicker() {
         i.strIngredient1.toLowerCase().includes(term.toLowerCase())
       );
       setSearched(newIngredients);
+    } else {
+      setSearched(ingredients);
     }
   }
 
   if (ingredients.length === 0) return <div>LOADING...</div>;
 
   return (
-    <div className="container col-sm-12 col-md-6">
+    <div className="container col-sm-12 col-md-6 col-lg-12">
       <SearchBar search={search} placeholder="Search Ingredients..." />
-      <TransitionGroup>
-        {slicedIngredients.map((ingredient) => (
-          <CSSTransition
+      <div className="d-flex flex-wrap justify-content-center">
+        {slicedIngredients.map((ingredient, i) => (
+          <Frame
+            position="relative"
+            animate={{ x: [50 * i, 0], opacity: [0, 1] }}
+            height="auto"
+            width=""
+            whileHover={{ scale: 1.05 }}
+            background="transparent"
             key={ingredient.strIngredient1}
             timeout={500}
-            classNames="item"
+            classNames="item m-4"
           >
             <button
-              className="btn btn-sm btn-success m-2"
+              className="btn btn btn-outline-light m-2"
               onClick={handleClick}
             >
               {ingredient.strIngredient1}
             </button>
-          </CSSTransition>
+          </Frame>
         ))}
-      </TransitionGroup>
+      </div>
       <hr className="border-secondary" />
     </div>
   );
