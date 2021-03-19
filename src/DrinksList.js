@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+// import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { getDrinksFromAPI } from "./actions/drinks";
-// import Slide from "react-reveal/Slide";
+import { Frame } from "framer";
 import "./DrinksList.css";
 
 /** Displays list of drinks from selected ingredients.
@@ -30,29 +30,28 @@ function DrinksList() {
 
   return (
     <div>
-      <TransitionGroup component="ul" className="list-group my-4">
+      <ul className="list-group my-4">
         {drinks &&
-          drinks.map((d) => (
-            <CSSTransition timeout={600} classNames="item" key={d.idDrink}>
-              <li className="list-group-item">
-                <Link to={`/drinks/${d.idDrink}`}>{d.strDrink}</Link>
-              </li>
-            </CSSTransition>
+          drinks.map((d, i) => (
+            <Frame
+              position="relative"
+              animate={{ x: [-(i * 50), 0], opacity: [0, 1] }}
+              size="100%"
+              whileHover={{ scale: 1.05 }}
+              background="transparent"
+              key={d.idDrink}
+            >
+              <Link
+                as="li"
+                className="list-group-item list-group-item-action my-1 text-decoration-none"
+                to={`/drinks/${d.idDrink}`}
+              >
+                {d.strDrink}
+              </Link>
+            </Frame>
           ))}
-      </TransitionGroup>
+      </ul>
     </div>
-    // <div>
-    //   <ul className="list-group my-4">
-    //     {drinks &&
-    //       drinks.map((d) => (
-    //         <Slide left>
-    //           <li className="list-group-item">
-    //             <Link to={`/drinks/${d.idDrink}`}>{d.strDrink}</Link>
-    //           </li>
-    //         </Slide>
-    //       ))}
-    //   </ul>
-    // </div>
   );
 }
 
