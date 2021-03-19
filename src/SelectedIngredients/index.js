@@ -2,7 +2,7 @@ import { faMinusCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { removeIngredientFromSelections } from "./actions/ingredients";
+import { removeIngredientFromSelections } from "../actions/ingredients";
 
 /**
  * display selections from redux store

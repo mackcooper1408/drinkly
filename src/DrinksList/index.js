@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 // import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { getDrinksFromAPI } from "./actions/drinks";
+import { getDrinksFromAPI } from "../actions/drinks";
 import { Frame } from "framer";
 import "./DrinksList.css";
 

@@ -5,8 +5,8 @@ import { Frame } from "framer";
 import {
   addIngredientToSelections,
   getIngredientsFromAPI,
-} from "./actions/ingredients";
-import SearchBar from "./SearchBar";
+} from "../actions/ingredients";
+import SearchBar from "../components/SearchBar";
 import "./IngredientPicker.css";
 
 /**

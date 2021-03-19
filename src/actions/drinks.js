@@ -1,4 +1,4 @@
-import DrinkApi from "../api";
+import DrinkApi from "../api/api";
 import { GET_DRINKS } from "./actionTypes";
 
 export function getDrinksFromAPI(ingredient) {

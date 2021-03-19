@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { v4 as uuid } from "uuid";
-import DrinkApi from "./api";
+import DrinkApi from "../api/api";
 import "./DrinkDetails.css";
 
 /** Displays details about a specific cocktail.

@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import DrinkDetails from "./DrinkDetails";
 import Home from "./Home";
-import NavBar from "./NavBar";
+import NavBar from "./components/NavBar";
 import CocktailPicker from "./CocktailPicker";
 
 function App() {
