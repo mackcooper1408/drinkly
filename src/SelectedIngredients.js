@@ -26,7 +26,7 @@ function SelectedIngredients() {
     <div>
       {ingredients.map((i) => (
         <button
-          className="btn btn-sm btn-danger m-2"
+          className="btn btn btn-danger m-2"
           key={i}
           id={i}
           onClick={handleClick}
