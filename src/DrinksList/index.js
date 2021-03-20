@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-// import { CSSTransition, TransitionGroup } from "react-transition-group";
+import LazyLoad from "react-lazyload";
 import { getDrinksFromAPI } from "../actions/drinks";
-import { Frame } from "framer";
 import "./DrinksList.css";
+import DrinkItem from "../DrinkItem";
 
 /** Displays list of drinks from selected ingredients.
  *  Each drink links to a drink detail page */
@@ -33,22 +32,9 @@ function DrinksList() {
       <ul className="list-group my-4">
         {drinks &&
           drinks.map((d, i) => (
-            <Frame
-              position="relative"
-              animate={{ x: [-(i * 50), 0], opacity: [0, 1] }}
-              size="100%"
-              whileHover={{ scale: 1.05 }}
-              background="transparent"
-              key={d.idDrink}
-            >
-              <Link
-                as="li"
-                className="list-group-item list-group-item-action my-1 text-decoration-none"
-                to={`/drinks/${d.idDrink}`}
-              >
-                {d.strDrink}
-              </Link>
-            </Frame>
+            <LazyLoad key={d.idDrink} height={50} offset={100}>
+              <DrinkItem drink={d} idx={i} />
+            </LazyLoad>
           ))}
       </ul>
     </div>
