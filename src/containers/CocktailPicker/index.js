@@ -1,7 +1,8 @@
 import React from "react";
-import DrinksList from "../DrinksList";
-import IngredientPicker from "../IngredientPicker";
-import SelectedIngredients from "../SelectedIngredients";
+
+import DrinksList from "containers/DrinksList";
+import IngredientPicker from "containers/IngredientPicker";
+import SelectedIngredients from "containers/SelectedIngredients";
 
 /** displays list of ingredients (IngredientPicker)
  *  and resulting cocktails (DrinksList) once an ingredient has been selected

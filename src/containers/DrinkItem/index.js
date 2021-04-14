@@ -1,6 +1,6 @@
-import { Frame } from "framer";
 import React from "react";
 import { Link } from "react-router-dom";
+import { Frame } from "framer";
 
 function DrinkItem({ drink, idx }) {
   return (

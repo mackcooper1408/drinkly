@@ -1,9 +1,10 @@
+import DrinkApi from "api";
+
 import {
   ADD_SELECTIONS,
   LOAD_INGREDIENTS,
   REMOVE_SELECTION,
 } from "./actionTypes";
-import DrinkApi from "../api/api";
 
 /** load list of ingredients from cocktail API */
 export function getIngredientsFromAPI() {

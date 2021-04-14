@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Frame } from "framer";
+
 import {
   addIngredientToSelections,
   getIngredientsFromAPI,
-} from "../actions/ingredients";
-import SearchBar from "../components/SearchBar";
+} from "actions/ingredients";
+import SearchBar from "components/SearchBar";
+
 import "./IngredientPicker.css";
 
 /**

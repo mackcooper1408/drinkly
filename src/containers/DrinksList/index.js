@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LazyLoad from "react-lazyload";
-import { getDrinksFromAPI } from "../actions/drinks";
+
+import { getDrinksFromAPI } from "actions/drinks";
+import DrinkItem from "containers/DrinkItem";
+
 import "./DrinksList.css";
-import DrinkItem from "../DrinkItem";
 
 /** Displays list of drinks from selected ingredients.
  *  Each drink links to a drink detail page */

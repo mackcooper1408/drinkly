@@ -2,6 +2,7 @@ import { faSearch, faBackspace } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useRef } from "react";
 import { throttle } from "throttle-debounce";
+
 import "./SearchBar.css";
 
 function SearchBar({ search, placeholder }) {

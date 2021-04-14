@@ -1,9 +1,9 @@
-// import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { v4 as uuid } from "uuid";
-import DrinkApi from "../api/api";
+
+import DrinkApi from "api";
+
 import "./DrinkDetails.css";
 
 /** Displays details about a specific cocktail.
@@ -90,7 +90,6 @@ function DrinkDetails() {
                 key={inst.id}
                 onClick={handleClick}
               >
-                {/* <FontAwesomeIcon icon={faPlusCircle} className="float-left" /> */}
                 {inst.instructions}
               </div>
             ))}
