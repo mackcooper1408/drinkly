@@ -1,15 +1,15 @@
 import "bootswatch/dist/darkly/bootstrap.min.css";
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-
-import rootReducer from "./rootReducer";
 import { createStore, applyMiddleware } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
+
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import rootReducer from "./rootReducer";
+import "./index.css";
 
 const store = createStore(
   rootReducer,
